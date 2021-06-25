@@ -2,13 +2,23 @@ import React, { useEffect, useState } from "react";
 import StoryCard from "./StoryCard";
 
 
-function StoryContainer({handleLikeClick, stories, handleDeleteClick}) {
+function StoryContainer({stories, handleLikeClick, handleDeleteClick, editStory, handleEditClick, handleCancelClick, handleOnChangeValue, handleEditStory}) {
 
   const [position, setPosition] = useState(0);
 
   const storiesToDisplay = listToShow().map((item,index)=>{
     return (
-      <StoryCard key={index} story={item} onLikeClick={handleLikeClick} onDeleteClick={handleDeleteClick} />
+      <StoryCard 
+        key={index}
+        story={item}
+        onEditClick={handleEditClick}
+        editFormData={editStory}
+        onLikeClick={handleLikeClick}
+        onDeleteClick={handleDeleteClick}
+        onCancelClick={handleCancelClick}
+        onChangeValue={handleOnChangeValue}
+        onSubmitEditForm={handleEditStory}
+      />
     )
   })
 
